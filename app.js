@@ -20,6 +20,12 @@ app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.get("/", (_, res) => {
+    return res.status(200).json({
+        success: true,
+        "message": "server is online"
+    })
+})
 app.use(courseRouter);
 app.use(studentRouter);
 app.use(errorsController.get404);
