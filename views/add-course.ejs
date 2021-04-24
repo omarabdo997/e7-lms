@@ -1,0 +1,36 @@
+<%- include('./includes/head.ejs') %>
+<%- include('./includes/body-begin.ejs') %>
+    <form action="/web/courses/create" method="POST">
+        <h3>Add Course</h3>
+        <p>Here you can add courses using a form!</p>
+        <label class="form-group">
+            <input type="text" class="form-control"  id="name" name="name" required>
+            <span for="name">Course Name</span>
+            <span class="border"></span>
+        </label>
+        <label class="form-group">
+            <input type="text" class="form-control"  id="code" name="code"required>
+            <span for="code">Course Code</span>
+            <span class="border"></span>
+        </label>
+        <label class="form-group" >
+            <textarea name="description" id="description" class="form-control"></textarea>
+            <span for="description">Course Description</span>
+            <span class="border"></span>
+        </label>
+        <button>Submit 
+            <i class="zmdi zmdi-arrow-right"></i>
+        </button>
+        <% if (typeof errors !== 'undefined') { %>
+            <% errors.forEach((error) => { %>
+                <p style="color: red; margin: 5px;"><%= error.msg %></p>
+            <% }) %>
+        <% } %>
+        <% if (typeof course !== 'undefined') { %>
+            <p style="color: rgb(0, 128, 85); margin: 5px;">Created course <%= course.code %> successfully!</p>
+        <% } %>
+        
+    </form>
+<%- include('./includes/body-end.ejs') %>
+
+			

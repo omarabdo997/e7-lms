@@ -1,0 +1,31 @@
+<%- include('./includes/head.ejs') %>
+<%- include('./includes/body-begin.ejs') %>
+    <form action="/web/students/create" method="POST">
+        <h3>Add Student</h3>
+        <p>Here you can add Students using a form!</p>
+        <label class="form-group">
+            <input type="text" class="form-control"  id="name" name="name" required>
+            <span for="name">Student Name</span>
+            <span class="border"></span>
+        </label>
+        <label class="form-group">
+            <input type="text" class="form-control"  id="code" name="code"required>
+            <span for="code">Student Code</span>
+            <span class="border"></span>
+        </label>
+        <button>Submit 
+            <i class="zmdi zmdi-arrow-right"></i>
+        </button>
+        <% if (typeof errors !== 'undefined') { %>
+            <% errors.forEach((error) => { %>
+                <p style="color: red; margin: 5px;"><%= error.msg %></p>
+            <% }) %>
+        <% } %>
+        <% if (typeof student !== 'undefined') { %>
+            <p style="color: rgb(0, 128, 85); margin: 5px;">Created student <%= student.code %> successfully!</p>
+        <% } %>
+        
+    </form>
+<%- include('./includes/body-end.ejs') %>
+
+			
