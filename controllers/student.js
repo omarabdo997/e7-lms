@@ -72,7 +72,7 @@ export const updateStudent = async (req, res, next) => {
         const { studentId } = req.params;
         const { name, code } = req.body;
         const student = await Student.findByPk(studentId);
-        notFoundStudent(student);
+        notFoundStudentError(student);
         student.name = name;
         student.code = code;
         await student.save();

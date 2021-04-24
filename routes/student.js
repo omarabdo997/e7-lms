@@ -9,7 +9,9 @@ const studentValidatorAndSanitizer = [
     check("name")
         .trim()
         .isLength({ min: 5 })
-        .withMessage("Name must have at least 5 chars!"),
+        .withMessage("Name must have at least 5 chars!")
+        .isAlpha("en-US", { ignore: "'- " })
+        .withMessage("Name allowed chars are only letters - ' and spaces"),
     check("code")
         .trim()
         .toUpperCase()
